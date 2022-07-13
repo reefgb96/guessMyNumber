@@ -3,7 +3,7 @@
 let secretNum = Math.trunc(Math.random() * 20 + 1);
 console.log(`Random number: ${secretNum}`);
 
-let score = document.querySelector('.score').textContent;
+let score = 20;
 let highScore = 0;
 let msg = function (message) {
   document.querySelector('.message').textContent = message;
@@ -22,15 +22,16 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.highScore').textContent = highScore;
     }
     msg('🚀 YOUR GUESS IS CORRECT!');
-    document.querySelector('.highScore').textContent =
-      document.querySelector('.score').textContent;
+    document.querySelector('.highScore').textContent = score;
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').textContent = secretNum;
   } else if (guess !== secretNum) {
+    score--;
+    document.querySelector('.score').textContent = score;
     guess > secretNum ? msg('📈  GUESS LOWER.') : msg('📉 GUESS HIGHER.');
-    document.querySelector('.score').textContent--;
     if (score < 1) {
       msg('👎  YOU LOST THE GAME. TRY AGAIN.');
+      document.querySelector('.score').textContent = 0;
     }
   }
 
