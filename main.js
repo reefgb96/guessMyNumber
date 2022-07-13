@@ -28,7 +28,7 @@ document.querySelector('.check').addEventListener('click', function () {
   } else if (guess !== secretNum) {
     score--;
     document.querySelector('.score').textContent = score;
-    guess > secretNum ? msg('📈  GUESS LOWER.') : msg('📉 GUESS HIGHER.');
+    msg(guess > secretNum ? '📈  GUESS LOWER.' : '📉 GUESS HIGHER.');
     if (score < 1) {
       msg('👎  YOU LOST THE GAME. TRY AGAIN.');
       document.querySelector('.score').textContent = 0;
